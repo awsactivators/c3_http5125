@@ -1,0 +1,137 @@
+<style>
+    body {
+        background-color: #333;
+    }
+    #container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    form input[type="text"],
+    form input[type="date"] {
+        padding: 8px;
+        border: 1px solid #007bff;
+        border-radius: 4px;
+    }
+
+    form input[type="submit"] {
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+    }
+
+    td a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    td a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+
+@model IEnumerable<SchoolDatabaseCTwo.Models.Teacher>
+@{
+    ViewBag.Title = "List";
+}
+
+<div id="container">
+    <nav class="mb-3">
+        <a class="navlink row" href="/TeacherPage/New">Add New Teacher</a>
+        <a class="navlink row" href="/TeacherPage/Ajax_New">Add New Teacher With AJAX</a>
+    </nav>
+
+    <h1>List of Teachers</h1>
+
+    <!-- Display message if successully added or no teachers found -->
+    @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+    {
+        <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+    }
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-warning">
+            @ViewBag.Message
+            <br />
+            <a href="@Url.Action("List", "TeacherPage")" class="btn btn-secondary mb-3">Back to All Teachers</a>
+        </div>
+    }
+
+    <!-- Search Form -->
+    <form action="/TeacherPage/List" method="GET">
+        <label for="SearchKey">Search by Name:</label>
+        <input type="text" name="SearchKey" id="SearchKey" autocomplete="off" />
+
+        <label for="StartDate">Start Hire Date:</label>
+        <input type="date" name="StartDate" id="StartDate" />
+
+        <label for="EndDate">End Hire Date:</label>
+        <input type="date" name="EndDate" id="EndDate" />
+
+        <input type="submit" value="Search" />
+    </form>
+
+
+
+    <!-- Teacher Table -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var teacher in Model)
+            {
+                <tr>
+                    <td>@teacher.TeacherId</td>
+                    <td>@teacher.TeacherFname @teacher.TeacherLname</td>
+                    <td><a href="/TeacherPage/Show/@teacher.TeacherId">Show Details</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

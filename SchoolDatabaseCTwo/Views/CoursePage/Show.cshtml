@@ -1,0 +1,74 @@
+@model SchoolDatabaseCTwo.Models.Course
+@{
+    ViewBag.Title = "Course Details";
+}
+
+<a href="/CoursePage/List" class="btn btn-secondary mb-3">Back to Course List</a> 
+
+<div>
+    <h2>Course Information</h2>
+    <table class="table">
+        <tr>
+            <th>Course ID</th>
+            <td>@Model.CourseId</td>
+        </tr>
+        <tr>
+            <th>Course Code</th>
+            <td>@Model.CourseCode</td>
+        </tr>
+        <tr>
+            <th>Course Name</th>
+            <td>@Model.CourseName</td>
+        </tr>
+        <tr>
+            <th>Start Date</th>
+            <td>@Model.StartDate.ToString("dd-MM-yyyy")</td>
+        </tr>
+        <tr>
+            <th>Finish Date</th>
+            <td>@Model.FinishDate.ToString("dd-MM-yyyy")</td>
+        </tr>
+        <tr>
+            <th>Teacher ID</th>
+            <td><a href="/TeacherPage/Show/@Model.TeacherId">@Model.TeacherId</a></td>
+        </tr>
+    </table>
+
+    <h3>Enrolled Students</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Student Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.Students.Count > 0)
+            {
+                @foreach (var student in ViewBag.Students)
+                {
+                    <tr>
+                        <td>@student.StudentFname @student.StudentLname</td>
+                        <td>@student.StudentNumber</td>
+                        <td>
+                            <a href="/StudentPage/Show/@student.StudentId" class="btn btn-info">View</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3">No students found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+    <!-- Update and Delete Actions -->
+    <a href="/CoursePage/Update/@Model.CourseId" class="btn btn-warning">Update Course</a>
+    <a href="/CoursePage/Delete/@Model.CourseId" class="btn btn-danger">Delete Course</a>
+</div>

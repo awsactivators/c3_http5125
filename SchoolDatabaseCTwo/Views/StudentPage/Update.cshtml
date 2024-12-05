@@ -1,0 +1,43 @@
+@model SchoolDatabaseCTwo.Models.Student
+@{
+    ViewBag.Title = "Update Student";
+}
+
+<nav class="my-3">
+    <a class="navlink" href="/StudentPage/List">Back To Students</a>
+</nav>
+
+<h2>Update Student</h2>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
+
+
+<form method="POST" action="/StudentPage/Update" name="update_student">
+    <input type="hidden" name="StudentId" value="@Model.StudentId" />
+    <div class="form-group">
+        <label for="StudentFname">First Name</label>
+        <input type="text" id="StudentFname" name="StudentFname" class="form-control" value="@Model.StudentFname" required />
+    </div>
+    <div class="form-group">
+        <label for="StudentLname">Last Name</label>
+        <input type="text" id="StudentLname" name="StudentLname" class="form-control" value="@Model.StudentLname" required />
+    </div>
+    <div class="form-group">
+        <label for="StudentNumber">Student Number</label>
+        <input type="text" id="StudentNumber" name="StudentNumber" class="form-control" value="@Model.StudentNumber" pattern="N\d{4}" required />
+    </div>
+    <div class="form-group">
+        <label for="EnrolDate">Enrollment Date</label>
+        <input type="date" id="EnrolDate" name="EnrolDate" class="form-control" value="@Model.EnrolDate.ToString("yyyy-MM-dd")" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Student</button>
+</form>

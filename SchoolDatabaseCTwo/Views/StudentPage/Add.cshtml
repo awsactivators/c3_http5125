@@ -1,0 +1,60 @@
+<style>
+    select[multiple] {
+    height: 150px; 
+    overflow-y: scroll;
+}
+
+</style>
+
+
+
+@model SchoolDatabaseCTwo.Models.Student
+@{
+    ViewBag.Title = "Add Student";
+}
+
+<nav class="my-3">
+    <a class="navlink" href="/StudentPage/List">Back To Students</a>
+</nav>
+
+<h2>Add New Student</h2>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
+
+
+<form method="POST" action="/StudentPage/Add" name="add_student">
+    <div class="form-group">
+        <label for="StudentFname">First Name</label>
+        <input type="text" id="StudentFname" name="StudentFname" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="StudentLname">Last Name</label>
+        <input type="text" id="StudentLname" name="StudentLname" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="StudentNumber">Student Number</label>
+        <input type="text" id="StudentNumber" name="StudentNumber" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="EnrolDate">Enrollment Date</label>
+        <input type="date" id="EnrolDate" name="EnrolDate" class="form-control" required />
+    </div>
+    <div class="form-group select">
+        <label for="Courses">Courses:</label>
+        <select id="Courses" name="Courses" multiple class="form-control">
+            @foreach (var course in ViewBag.Courses as IEnumerable<SchoolDatabaseCTwo.Models.Course>)
+            {
+                <option value="@course.CourseId">@course.CourseName</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Student</button>
+</form>

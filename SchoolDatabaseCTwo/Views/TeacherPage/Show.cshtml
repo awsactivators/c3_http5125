@@ -1,0 +1,128 @@
+<style>
+     body {
+        background-color: #333;
+    }
+
+    #container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .info-section {
+        margin-bottom: 15px;
+    }
+
+    .info-section strong {
+        display: inline-block;
+        width: 150px;
+        color: #333;
+    }
+
+    nav a.navlink {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+        margin-bottom: 20px;
+        font-size: 0.9em;
+    }
+
+    nav a.navlink:hover {
+        background-color: #0056b3;
+    }
+
+    .delete-update-btn {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .ms-5 {
+        margin-left: 0rem !important;
+    }
+
+</style>
+
+
+@model SchoolDatabaseCTwo.Models.Teacher
+@{
+    ViewBag.Title = "Show";
+}
+
+<div id="container">
+    @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+    {
+        <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+    }
+
+    <nav class="info-section">
+        <a class="navlink" href="/TeacherPage/List">Back To Teachers</a>
+    </nav>
+    <h2>Teacher Information</h2>
+
+    <div class="info-section">
+        <strong>ID:</strong> @Model.TeacherId
+    </div>
+    <div class="info-section">
+        <strong>Employee Number:</strong> @Model.EmployeeNumber
+    </div>
+    <div class="info-section">
+        <strong>Salary:</strong> @Model.Salary
+    </div>
+
+    <div class="info-section">
+        <strong>Full Name:</strong> @Model.TeacherFname @Model.TeacherLname
+    </div>
+    <div class="info-section">
+        <strong>Hire Date:</strong> @Model.HireDate
+    </div>
+    <div class="info-section">
+        <strong>Work Phone:</strong> @Model.TeacherWorkPhone
+    </div>
+
+
+    <br>
+    <hr>
+
+    <div class="info-section">
+    <h3>Courses Taught</h3>
+
+    @if (Model.Courses != null && Model.Courses.Any()) 
+    {
+        <ul>
+            @foreach (var course in Model.Courses)
+            {
+                <div><a href="/CoursePage/Show/@course.CourseId">@course.CourseCode</a> : @course.CourseName</div>
+                
+            }
+        </ul>
+    } 
+    else
+    {
+        <p>No courses assigned to this teacher.</p>
+    }
+
+
+    <div class="delete-update-btn">
+        <a class="ms-5 mt-3 btn btn-primary update-teach" href="/TeacherPage/Update/@Model.TeacherId">Update Teacher</a>
+        <a class="mt-3 btn btn-primary" href="/TeacherPage/Ajax_Update/@Model.TeacherId">Update Teacher with AJAX</a>
+    </div>
+    <div class="delete-update-btn">
+        <a class="mt-3 btn btn-danger" href="/TeacherPage/DeleteConfirm/@Model.TeacherId">Delete Teacher</a>
+        <a class="mt-3 btn btn-danger" href="/TeacherPage/Ajax_DeleteConfirm/@Model.TeacherId">Delete Teacher with AJAX</a>
+    </div>
+
+</div>
+

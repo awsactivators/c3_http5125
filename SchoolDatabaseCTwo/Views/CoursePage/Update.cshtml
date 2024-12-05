@@ -1,0 +1,46 @@
+@model SchoolDatabaseCTwo.Models.Course
+@{
+    ViewBag.Title = "Update Course";
+}
+
+<div class="my-3"> 
+    <a href="/CoursePage/List">Back To Courses</a>
+</div>
+
+<h2>Update Course</h2>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
+
+
+<form method="POST" action="/CoursePage/Update">
+    <input type="hidden" name="CourseId" value="@Model.CourseId" />
+    <div class="form-group">
+        <label for="CourseCode">Course Code</label>
+        <input type="text" id="CourseCode" name="CourseCode" value="@Model.CourseCode" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="CourseName">Course Name</label>
+        <input type="text" id="CourseName" name="CourseName" value="@Model.CourseName" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="StartDate">Start Date</label>
+        <input type="date" id="StartDate" name="StartDate" value="@Model.StartDate.ToString("yyyy-MM-dd")" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="FinishDate">Finish Date</label>
+        <input type="date" id="FinishDate" name="FinishDate" value="@Model.FinishDate.ToString("yyyy-MM-dd")" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="TeacherId">Teacher ID</label>
+        <input type="number" id="TeacherId" name="TeacherId" value="@Model.TeacherId" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Update Course</button>
+</form>

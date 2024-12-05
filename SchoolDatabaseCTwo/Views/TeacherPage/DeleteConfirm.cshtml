@@ -1,0 +1,17 @@
+@model SchoolDatabaseCTwo.Models.Teacher
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+
+<div id="containershow">
+    <h2>Are you sure you want to delete @Model.TeacherFname @Model.TeacherLname?</h2>
+    <p>This action cannot be undone.</p>
+    <a class="btn btn-outline-primary me-3" href="/TeacherPage/Show/@Model.TeacherId">Cancel</a>
+    <button onclick="DeleteTeacher(@Model.TeacherId);" class="btn btn-danger">Confirm Delete</button>
+    @if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <p class="mt-3 text-danger">@ViewBag.Message</p>
+    }
+</div>

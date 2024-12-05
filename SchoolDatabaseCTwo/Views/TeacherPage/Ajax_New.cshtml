@@ -1,0 +1,46 @@
+@{
+    ViewBag.Title = "Ajax_Add";
+}
+
+<div id="containershow">
+    <nav class="my-3">
+        <a class="navlink" href="/TeacherPage/List">Back To Teachers</a>
+    </nav>
+    <h2>New Teacher with AJAX</h2>
+
+    <div class="form-group">
+        <label for="TeacherFname">First Name:</label>
+        <input type="text" class="form-control" id="TeacherFname" name="TeacherFname" placeholder="Enter first name" />
+        <span class="error-message text-danger"></span>
+    </div>
+    <div class="mt-2 form-group">
+        <label for="TeacherLname">Last Name:</label>
+        <input type="text" class="form-control" id="TeacherLname" name="TeacherLname" placeholder="Enter last name" />
+        <span class="error-message text-danger"></span>
+    </div>
+    <div class="mt-2 form-group">
+        <label for="EmployeeNumber">Employee Number:</label>
+        <input type="text" class="form-control" id="EmployeeNumber" name="EmployeeNumber" placeholder="Enter employee number" />
+        <span class="error-message text-danger"></span>
+    </div>
+    <div class="mt-2 form-group">
+        <label for="HireDate">Hire Date:</label>
+        <input type="date" class="form-control" id="HireDate" name="HireDate" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+        <span class="error-message text-danger"></span>
+    </div>
+    <div class="mt-2 form-group">
+        <label for="Salary">Salary:</label>
+        <input type="number" step=".01" class="form-control" id="Salary" name="Salary" placeholder="Enter salary" />
+        <span class="error-message text-danger"></span>
+    </div>
+    <div class="mt-2 form-group">
+        <label for="TeacherWorkPhone">Work Phone:</label>
+        <input type="text" class="form-control" id="TeacherWorkPhone" name="TeacherWorkPhone" placeholder="Enter work phone number" />
+        <span class="error-message text-danger"></span>
+    </div>
+
+    <div id="ResponseText" style="margin-top: 10px;"></div>
+
+    <button onclick="AddTeacher();" class="mt-2 btn btn-primary">Add Teacher</button>
+    
+</div>

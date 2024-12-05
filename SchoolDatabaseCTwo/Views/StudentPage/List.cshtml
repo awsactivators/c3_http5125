@@ -1,0 +1,60 @@
+<style>
+    .alert {
+    padding: 10px;
+    border: 1px solid green;
+    background-color: #d4edda;
+    color: #155724;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+</style>
+
+@model IEnumerable<SchoolDatabaseCTwo.Models.Student>
+@{
+    ViewBag.Title = "List of Students";
+}
+
+<div>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+
+    <h2>List of Students</h2>
+    <a href="/StudentPage/Add" class="btn btn-primary mb-3">Add New Student</a> 
+    <br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Student Number</th>
+                <th>Enrollment Date</th>
+                <th>Actions</th> 
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.StudentId</td>
+                    <td>@student.StudentFname @student.StudentLname</td>
+                    <td>@student.StudentNumber</td>
+                    <td>@student.EnrolDate.ToString("dd-MM-yyyy")</td>
+                    <td>
+                        <a href="/StudentPage/Show/@student.StudentId" class="btn btn-info btn-sm">View</a> 
+                        <a href="/StudentPage/Update/@student.StudentId" class="btn btn-warning btn-sm">Update</a> 
+                        <a href="/StudentPage/Delete/@student.StudentId" class="btn btn-danger btn-sm">Delete</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

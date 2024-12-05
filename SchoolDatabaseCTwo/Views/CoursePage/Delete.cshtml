@@ -1,0 +1,38 @@
+@model SchoolDatabaseCTwo.Models.Course
+@{
+    ViewBag.Title = "Delete Course";
+}
+
+
+<h2>Delete Course</h2>
+
+<p>Are you sure you want to delete the following course?</p>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <td>@Model.CourseId</td>
+    </tr>
+    <tr>
+        <th>Course Code</th>
+        <td>@Model.CourseCode</td>
+    </tr>
+    <tr>
+        <th>Course Name</th>
+        <td>@Model.CourseName</td>
+    </tr>
+    <tr>
+        <th>Start Date</th>
+        <td>@Model.StartDate.ToString("dd-MM-yyyy")</td>
+    </tr>
+    <tr>
+        <th>Finish Date</th>
+        <td>@Model.FinishDate.ToString("dd-MM-yyyy")</td>
+    </tr>
+</table>
+
+<form method="POST" action="/CoursePage/DeleteConfirmed/@Model.CourseId">
+    <input type="hidden" name="CourseId" value="@Model.CourseId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="/CoursePage/List" class="btn btn-secondary">Cancel</a>
+</form>

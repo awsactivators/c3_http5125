@@ -1,0 +1,37 @@
+@model SchoolDatabaseCTwo.Models.Student
+@{
+    ViewBag.Title = "Delete Student";
+}
+
+<nav class="my-3">
+    <a class="navlink" href="/StudentPage/List">Back To Students</a>
+</nav>
+
+<h2>Delete Student</h2>
+
+<p>Are you sure you want to delete the following student?</p>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <td>@Model.StudentId</td>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <td>@Model.StudentFname @Model.StudentLname</td>
+    </tr>
+    <tr>
+        <th>Student Number</th>
+        <td>@Model.StudentNumber</td>
+    </tr>
+    <tr>
+        <th>Enrollment Date</th>
+        <td>@Model.EnrolDate.ToString("dd-MM-yyyy")</td>
+    </tr>
+</table>
+
+<form method="POST" action="/StudentPage/DeleteConfirmed/@Model.StudentId">
+    <input type="hidden" name="StudentId" value="@Model.StudentId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="/StudentPage/List" class="btn btn-secondary">Cancel</a>
+</form>

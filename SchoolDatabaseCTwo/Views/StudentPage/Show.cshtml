@@ -1,0 +1,66 @@
+@model SchoolDatabaseCTwo.Models.Student
+@{
+    ViewBag.Title = "Student Details";
+}
+
+<a href="/StudentPage/List" class="btn btn-secondary mb-3">Back to Student List</a> <!-- Back to List Button -->
+
+<div>
+    <h2>Student Information</h2>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <td>@Model.StudentId</td>
+        </tr>
+        <tr>
+            <th>Full Name</th>
+            <td>@Model.StudentFname @Model.StudentLname</td>
+        </tr>
+        <tr>
+            <th>Student Number</th>
+            <td>@Model.StudentNumber</td>
+        </tr>
+        <tr>
+            <th>Enrollment Date</th>
+            <td>@Model.EnrolDate.ToString("dd-MM-yyyy")</td>
+        </tr>
+    </table>
+
+    <h3>Courses Enrolled</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.Courses.Count > 0)
+            {
+                @foreach (var course in ViewBag.Courses)
+                {
+                    <tr>
+                        <td>@course.CourseCode</td>
+                        <td>@course.CourseName</td>
+                        <td>
+                            <a href="/CoursePage/Show/@course.CourseId" class="btn btn-info">View</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3">No courses found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+    <!-- Update and Delete Actions -->
+    <a href="/StudentPage/Update/@Model.StudentId" class="btn btn-warning">Update Student</a>
+    <a href="/StudentPage/Delete/@Model.StudentId" class="btn btn-danger">Delete Student</a>
+</div>

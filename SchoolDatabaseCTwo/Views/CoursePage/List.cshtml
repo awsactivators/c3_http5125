@@ -1,0 +1,63 @@
+<style>
+    .alert {
+    padding: 10px;
+    border: 1px solid green;
+    background-color: #d4edda;
+    color: #155724;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+</style>
+
+
+@model IEnumerable<SchoolDatabaseCTwo.Models.Course>
+@{
+    ViewBag.Title = "List of Courses";
+}
+
+<div>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <h2>List of Courses</h2>
+    <a href="/CoursePage/Add" class="btn btn-primary mb-3">Add New Course</a> 
+    <br>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Start Date</th>
+                <th>Finish Date</th>
+                <th>Teacher ID</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in Model)
+            {
+                <tr>
+                    <td>@course.CourseId</td>
+                    <td>@course.CourseCode</td>
+                    <td>@course.CourseName</td>
+                    <td>@course.StartDate.ToString("dd-MM-yyyy")</td>
+                    <td>@course.FinishDate.ToString("dd-MM-yyyy")</td>
+                    <td>@course.TeacherId</td>
+                    <td>
+                        <a href="/CoursePage/Show/@course.CourseId" class="btn btn-info btn-sm">View</a> 
+                        <a href="/CoursePage/Update/@course.CourseId" class="btn btn-warning btn-sm">Update</a>
+                        <a href="/CoursePage/Delete/@course.CourseId" class="btn btn-danger btn-sm">Delete</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
