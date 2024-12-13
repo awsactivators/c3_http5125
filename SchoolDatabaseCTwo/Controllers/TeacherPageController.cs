@@ -176,7 +176,7 @@ namespace SchoolDatabaseCTwo.Controllers
 
     /// GET /TeacherPage/Update/1
 
-    public IActionResult Update(int id)
+    public IActionResult Edit(int id)
     {
       var actionResult = _teacherApiController.FindTeacher(id);
       var selectedTeacher = (actionResult as OkObjectResult)?.Value as Teacher;
@@ -197,7 +197,7 @@ namespace SchoolDatabaseCTwo.Controllers
     /// POST /TeacherPage/Update/{id}
 
     [HttpPost]
-    public IActionResult Update(int id, string teacherFname, string teacherLname, string employeeNumber, DateTime hireDate, decimal? salary, string teacherWorkPhone)
+    public IActionResult Edit(int id, string teacherFname, string teacherLname, string employeeNumber, DateTime hireDate, decimal? salary, string teacherWorkPhone)
     {
     if (string.IsNullOrEmpty(teacherFname) || string.IsNullOrEmpty(teacherLname))
     {

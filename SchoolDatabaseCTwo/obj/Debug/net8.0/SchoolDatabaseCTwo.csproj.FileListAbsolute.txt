@@ -113,3 +113,4 @@
 /Users/Genevieve/Desktop/Web-Dev-Humber/labs/Backend/c3_http5125/SchoolDatabaseCTwo/obj/Debug/net8.0/SchoolDatabaseCTwo.pdb
 /Users/Genevieve/Desktop/Web-Dev-Humber/labs/Backend/c3_http5125/SchoolDatabaseCTwo/obj/Debug/net8.0/SchoolDatabaseCTwo.genruntimeconfig.cache
 /Users/Genevieve/Desktop/Web-Dev-Humber/labs/Backend/c3_http5125/SchoolDatabaseCTwo/obj/Debug/net8.0/ref/SchoolDatabaseCTwo.dll
+/Users/Genevieve/Desktop/Web-Dev-Humber/labs/Backend/c3_http5125/SchoolDatabaseCTwo/obj/Debug/net8.0/SchoolDatabaseCTwo.sourcelink.json

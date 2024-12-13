@@ -1,6 +1,6 @@
 @model SchoolDatabaseCTwo.Models.Teacher
 @{
-    ViewBag.Title = "Update";
+    ViewBag.Title = "Edit";
 }
 
 @if (!string.IsNullOrEmpty(ViewBag.Message))
@@ -26,7 +26,7 @@
     </nav>
     <h2>Update Teacher</h2>
 
-    <form method="POST" action="/TeacherPage/Update/@Model.TeacherId" name="update_teacher">
+    <form method="POST" action="/TeacherPage/Edit/@Model.TeacherId" name="update_teacher">
         <div class="form-group">
             <label for="TeacherFname">First Name:</label>
             <input type="text" class="form-control" id="TeacherFname" name="TeacherFname" placeholder="Enter first name" value="@Model.TeacherFname" />

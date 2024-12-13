@@ -90,6 +90,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlclBhZ2UvRGVsZXRlQ29uZmlybS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/Genevieve/Desktop/Web-Dev-Humber/labs/Backend/c3_http5125/SchoolDatabaseCTwo/Views/TeacherPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlclBhZ2UvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/Genevieve/Desktop/Web-Dev-Humber/labs/Backend/c3_http5125/SchoolDatabaseCTwo/Views/TeacherPage/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlclBhZ2UvTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -100,10 +104,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/Genevieve/Desktop/Web-Dev-Humber/labs/Backend/c3_http5125/SchoolDatabaseCTwo/Views/TeacherPage/Show.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlclBhZ2UvU2hvdy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/Genevieve/Desktop/Web-Dev-Humber/labs/Backend/c3_http5125/SchoolDatabaseCTwo/Views/TeacherPage/Update.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlclBhZ2UvVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/Genevieve/Desktop/Web-Dev-Humber/labs/Backend/c3_http5125/SchoolDatabaseCTwo/Views/_ViewImports.cshtml]
